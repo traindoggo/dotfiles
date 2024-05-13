@@ -1,0 +1,84 @@
+live_config_reload = true
+
+[cursor.style]
+shape = "Underline"
+blinking = "On"
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 14.0
+[font.bold]
+family = "CaskaydiaCove Nerd Font Mono"
+[font.italic]
+family = "JetBrainsMono Nerd Font Mono"
+[font.normal]
+#family = "0xProto Nerd Font Mono"
+#family = "Agave Nerd Font Mono"
+family = "CaskaydiaCove Nerd Font Mono"
+#family = "DejaVuSansM Nerd Font Mono"
+#family = "GeistMono Nerd Font Mono"
+#family = "Hack Nerd Font Mono"
+#family = "HackGen Console NF"
+#family = "JetBrainsMono Nerd Font Mono"
+#family = "MonaspiceAr Nerd Font Mono"
+#family = "MonaspiceKr Nerd Font Mono"
+#family = "MonaspiceNe Nerd Font Mono"
+###Bad
+#family = "MonaspiceRn Nerd Font Mono"
+#family = "MonaspiceXe Nerd Font Mono"
+
+
+
+
+[mouse]
+hide_when_typing = false
+[[mouse.bindings]]
+action = "Copy"
+mouse = "Left"
+[[mouse.bindings]]
+action = "Paste"
+mouse = "Right"
+
+
+[scrolling]
+history = 10000
+multiplier = 5
+
+[shell]
+program = "/usr/bin/zsh"
+
+[window]
+decorations = "none"
+opacity = 0.85
+startup_mode = "windowed"
+[window.dimensions]
+columns = 130
+lines = 47
+[window.padding]
+x = 0
+y = 0
+
+[colors.normal]
+black = "#01060E"
+blue = "#53BDFA"
+cyan = "#90E1C6"
+green = "#91B362"
+magenta = "#FAE994"
+red = "#EA6C73"
+white = "#C7C7C7"
+yellow = "#F9AF4F"
+[colors.bright]
+black = "#686868"
+blue = "#59C2FF"
+cyan = "#95E6CB"
+green = "#C2D94C"
+magenta = "#FFEE99"
+red = "#F07178"
+white = "#FFFFFF"
+yellow = "#FFB454"
+[colors.primary]
+background = "#0A0E14"
+foreground = "#B3B1AD"
+
