@@ -1,0 +1,144 @@
+#
+# macro
+#
+snippet forint
+	for (int $1 = 0; $1 < $2; ++$1) {
+	  $0
+	}
+
+snippet forll
+	for (ll $1 = 0; $1 < $2; ++$1) {
+	  $0
+	}
+
+
+snippet Graph
+	using Graph = vector<vector<int>>;
+
+
+#
+# Data Structures
+#
+snippet UnionFind
+		struct UnionFind {
+		  vector<int> par, rank;
+		
+		  UnionFind(int n) : par(n), rank(n) {
+		    rep(i, n) {
+		      par[i] = i, rank[i] = 0;
+		    }
+		  }
+		
+		  int root(int x) { return par[x] == x ? x : par[x] = root(par[x]); }
+		  bool same(int x, int y) { return root(x) == root(y); }
+		  void merge(int x, int y) {
+		    x = root(x), y = root(y);
+		    if (x == y) return;
+		
+		    if (rank[x] < rank[y]) {
+		      par[x] = y;
+		    } else {
+		      par[y] = x;
+		      if (rank[x] == rank[y]) {
+		        rank[x]++;
+		      }
+		    }
+		  }
+		};
+
+snippet SegmentTree
+	template <typename T> struct SegmentTree {
+	  int size_;
+	  T init_;
+	  vector<T> dat;
+	
+	  SegmentTree(int n, int init) : size_(1), init_(init) {
+	    while (n > size_) size_ *= 2;
+	    dat.resize(2 * size_ - 1, init);
+	  }
+	
+	  void update(int i, int x) {
+	    i += size_ - 1;
+	    dat[i] += x;  // fix
+	
+	    while (i > 0) {
+	      i = (i - 1) / 2;
+	      dat[i] = dat[2 * i + 1] + dat[2 * i + 2];  // fix
+	    }
+	  }
+	
+	  int query(int a, int b, int k = 0, int l = 0, int r = -1) {
+	    if (r < 0) r = size_;
+	    if (r <= a || b <= l) return init_;
+	    if (a <= l && r <= b) return dat[k];
+	
+	    int vl = query(a, b, 2 * k + 1, l, (l + r) / 2);
+	    int vr = query(a, b, 2 * k + 2, (l + r) / 2, r);
+	    return vl + vr;  // fix
+	  }
+	};
+
+
+#
+# Algorithms
+#
+snippet Eratosthenes
+	vector<bool> create_eratosthenes(int n) {
+	  vector<bool> sheet(n + 1, true);
+	
+	  sheet[0] = false;
+	  sheet[1] = false;
+	
+	  for (int p = 2; p <= n; ++p) {
+	    if (!sheet[p]) continue;
+	
+	    for (int q = p * 2; q <= n; q += p) {
+	      sheet[q] = false;
+	    }
+	  }
+	
+	  return sheet;
+	}
+
+snippet Modpow
+	llint modpow(llint x, llint n, llint mod) {
+	  x = x % mod;
+	
+	  if (n == 0)
+	    return 1;
+	  else if (n % 2 == 1)
+	    return (x * modpow(x, n - 1, mod)) % mod;
+	  else
+	    return modpow((x * x) % mod, n / 2, mod) % mod;
+	}
+
+
+#
+# Utils
+#
+snippet ceil
+	llint ceil(llint N, llint d) {
+	  if (d < 0) {
+	    N *= -1, d *= -1;
+	  }
+	
+	  if (N > 0)
+	    return (N - 1) / d + 1;
+	  return N / d;
+	}
+
+snippet temp
+	#define all(k)  k.begin(),  k.end()
+	#define rall(k) k.rbegin(), k.rend()
+	
+	#define INFi  1   << 30
+	#define INFll 1LL << 60
+	#define MOD17 10'0000'0007
+	#define MOD98  9'9824'4353
+
+	template <typename T> inline bool chmax(T& a, const T& b) {
+	  return ((a < b) ? (a = b, true) : false);
+	}
+	template <typename T> inline bool chmin(T& a, const T& b) {
+	  return ((a > b) ? (a = b, true) : false);
+	}
