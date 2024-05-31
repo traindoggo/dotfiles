@@ -22,20 +22,8 @@ vim.g.maplocalleader = " "
 require("lazy").setup(
 	{
 		{
-			"williamboman/mason.nvim",
-			cmd = {
-				"Mason",
-				"MasonInstall",
-				"MasonLog",
-				"MasonUpdate",
-			},
-		},
-
-		{
 			"neovim/nvim-lspconfig",
 			dependencies = {
-				"williamboman/mason.nvim",
-				"williamboman/mason-lspconfig.nvim",
 				"lithammer/nvim-diagnosticls",
 				"mason-org/mason-registry",
 				"folke/neodev.nvim",
@@ -147,17 +135,18 @@ require("lazy").setup(
 )
 
 -- LSP Sever management
-require("rc.neodev")
-require("rc.mason")
 require("rc.cmp")
+require("rc.lspconfig")
+require("rc.none_ls")
 require("rc.diagnostic")
 require("rc.treesitter")
 
-require("rc.none_ls")
 require("rc.telescope")
-require("rc.nvim-comment")
 require("rc.lualine")
+require("rc.neodev")
+
 require("rc.gitsigns")
 require("rc.emmet_ls")
 require("rc.log-highlight")
+require("rc.nvim-comment")
 require("rc.vim-markdown")

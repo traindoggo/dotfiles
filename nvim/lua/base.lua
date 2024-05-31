@@ -18,6 +18,7 @@ glo.scrolloff = 5
 win.wrap = false
 win.list = true
 opt.listchars = "tab:»  "
+opt.foldenable = false
 
 -- move
 glo.whichwrap = "b,s,h,l,<,>,[,],~"
