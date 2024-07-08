@@ -64,6 +64,23 @@ lspconfig.ruff_lsp.setup({
 	capabilities = capabilities,
 })
 
+lspconfig.rust_analyzer.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	settings = {
+		["rust-analyzer"] = {
+			imports = {
+				granularity = { group = "module" },
+				prefix = "self",
+			},
+			cargo = {
+				buildScripts = { enable = true },
+			},
+			procMacro = { enable = true },
+		},
+	},
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 

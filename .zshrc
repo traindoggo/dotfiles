@@ -74,17 +74,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 echo 'pyenv shell 3.12.3'
 
-# eza - ls color
-# eza_params=('--git' '--icons' '--classify' '--group-directories-first' '--time-style=long-iso' '--group' '--color-scale')
-# alias ls='eza $eza_params'
-# alias sl='ls'
-# alias l='eza --git-ignore $eza_params'
-# alias ll='eza --all --header --long $eza_params'
-# alias llm='eza --all --header --long --sort=modified $eza_params'
-# alias la='eza -lbhHigUmuSa'
-# alias lx='eza -lbhHigUmuSa@'
-# alias lt='eza --tree $eza_params'
-# alias tree='eza --tree $eza_params'
 source ~/Userland/terminals/ls_colors.sh
 
 
@@ -97,6 +86,7 @@ alias cat="batcat -n"
 alias ls="ls --color"
 alias sl="ls"
 alias ll="ls -la"
+alias l="ls"
 alias c="clear"
 alias cls="clear;ls"
 
@@ -116,11 +106,13 @@ alias t="touch"
 alias v="nvim"
 alias nv="nvim"
 alias vn="nvim"
+alias py="python"
 
 # app
 alias tmp="temper"
 alias cursor="~/Userland/editors/cursor-0.33.1x86_64.AppImage"
 alias pyinit="python -m venv venv && . ./venv/bin/activate && pip install -U pip"
+alias cc="cargo compete"
 
 # git
 alias ga="git add"
@@ -147,6 +139,7 @@ function copy() { cat $1 | pbcopy }
 function mkcd () { mkdir $1 && cd $1 }
 function gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;}
 function yuki() { mkdir $1 && cd $1 && oj d "https://yukicoder.me/problems/no/$1" }
+function rrun() { rustc $1.rs && ./$1 }
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
